@@ -16,6 +16,18 @@ import (
 // Int converts JSON range strings into a slice of int.s
 type Int []int
 
+// Parse parses a string into an integer slice. If the parsing fails a nil
+// slice is returned.
+func Parse(s string) ([]int, error) {
+	return newInt(s)
+}
+
+// Parsef parses a string according to a format specifier and returns the
+// resulting integer slice.
+func Parsef(s string, a ...interface{}) ([]int, error) {
+	return newInt(fmt.Sprintf(s, a...))
+}
+
 // NewInt creates a new integer sequence from a string where inclusive ranges
 // of numbers are disgnated using a hyphen, and multiple sub-sequences are
 // designated using a comma.
