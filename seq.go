@@ -41,6 +41,9 @@ func NewInt(s string) (Int, error) {
 
 func newInt(s string) ([]int, error) {
 	var intSeq []int
+	if s == "" {
+		return intSeq, nil
+	}
 	elements := strings.Split(s, ",")
 	for _, element := range elements {
 		nums := strings.Split(element, "-")
